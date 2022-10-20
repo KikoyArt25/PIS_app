@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="PIS_app.Page.WelcomePage"
+             BackgroundColor="#98A8F8"
+             Title="">
+    <VerticalStackLayout>
+
+        <skia:SKLottieView Source="n.json"
+                           RepeatCount="-1"
+                           HeightRequest="300" WidthRequest="500"/>
+
+        <Grid Margin="60"
+         VerticalOptions="CenterAndExpand"
+        RowDefinitions="Auto,Auto,Auto">
+
+            <Label Text="Manage your Patients " FontSize="Header" FontAttributes="Bold"/>
+
+            <Label Grid.Row="1" Text="Patience is not the ability to wait, but the ability to keep a good attitude while waiting"/>
+
+            <Grid Grid.Row ="2" ColumnDefinitions="*, *" Margin="5" ColumnSpacing="5">
+
+                <Button Text="Get Started"                         
+                        HeightRequest="50" 
+                        
+                        BackgroundColor="#251B37"
+                        TextColor="White" x:Name="BTN_ToRegister" 
+                        Clicked="BTN_ToRegister_Clicked"
+                        />
+
+                <Button Grid.Column="2" Text="I already Have an Account" 
+                        
+                        HeightRequest="50"
+                        BackgroundColor="White"
+                        TextColor="#251B37"
+                        x:Name="BTN_Tologin"
+                        Clicked="BTN_Tologin_Clicked"/>
+            </Grid>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

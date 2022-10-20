@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="PIS_app.Page.RegisterPage"
+             BackgroundColor="#98A8F8"
+             Title="">
+    <VerticalStackLayout>
+
+        <skia:SKLottieView Source="o.json"
+                           RepeatCount="-1"
+                           HeightRequest="350" WidthRequest="500"/>
+
+        <Label Text="Welcome to Back!" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#251B37"/>
+        <Label Text="Create your Account!" FontSize="15" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,0,0,20"/>
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+
+            <Entry Grid.Row="0" TextColor="#251B37" Grid.Column="0" x:Name="fname"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" Placeholder="First Name" VerticalOptions="CenterAndExpand" WidthRequest="460"/>
+
+            <Entry Grid.Row="1" TextColor="#251B37" Grid.Column="0" x:Name="lname"
+               Grid.ColumnSpan="2"  PlaceholderColor="Black" Placeholder="Last Name" VerticalOptions="CenterAndExpand" WidthRequest="460"/>
+
+            <Entry Grid.Row="3" TextColor="#251B37" Grid.Column="0" x:Name="mail"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" Placeholder="Email" VerticalOptions="CenterAndExpand" WidthRequest="460"/>
+
+            <Entry Grid.Row="4" TextColor="#251B37" Grid.Column="0" x:Name="password"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" Placeholder="Password" VerticalOptions="CenterAndExpand" IsPassword="true"  WidthRequest="460"/>
+
+
+
+            <Button Margin="0,20,0,0" Grid.Row="5" 
+                Grid.Column="1" 
+                    WidthRequest="200"
+                Text="Register" 
+                     BackgroundColor="White"
+                        TextColor="#251B37"
+                HorizontalOptions="FillAndExpand" 
+                x:Name="BTNRegister" 
+                    Clicked="BTNRegister_Clicked"/>
+
+            <Button Margin="0,20,0,0" Grid.Row="5" 
+                    WidthRequest="200"
+                Grid.Column="0" 
+                     BackgroundColor="#251B37"
+                        TextColor="White"
+                Text="Cancel" 
+                HorizontalOptions="FillAndExpand" 
+                    x:Name="BTNCancel"
+                    Clicked="BTNCancel_Clicked"/>
+
+        </Grid>
+    
+    </VerticalStackLayout>
+</ContentPage>

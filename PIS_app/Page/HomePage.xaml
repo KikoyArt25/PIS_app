@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PIS_app.Page.HomePage"
+             BackgroundColor="#98A8F8"
+             Title="">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="" 
+                     Text="Add Patient" 
+                     x:Name="AddPatient"
+                     Order="Secondary"  
+                     Clicked="AddPatient_Clicked"
+                     />
+        <ToolbarItem IconImageSource="" 
+                     Text="Edit Patient Info" 
+                     x:Name="BTN_EditPatient"
+                     Clicked="BTN_EditPatient_Clicked"
+                     Order="Secondary"  
+                      />
+
+        <ToolbarItem IconImageSource="" 
+                     Text="Delete Patient Info"
+                     Clicked="BTN_delete_Clicked"
+                     x:Name="BTN_delete"
+                     Order="Secondary"  
+                      />
+       
+    </ContentPage.ToolbarItems>
+
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
+        <Frame HeightRequest="100" CornerRadius="50" BackgroundColor="#251B37"
+               Margin="0,0,0,0"/>
+
+        <Label Grid.Row="0" 
+               Text="Registered Patients"
+               Margin="20" 
+               FontSize="Large"
+               FontAttributes="Bold"
+               VerticalOptions="Center" 
+               TextColor="{StaticResource TextColorWhite}"/>
+
+        <ImageButton Grid.Row="0"
+                     HorizontalOptions="EndAndExpand" 
+                     Source="add.png" 
+                     HeightRequest="30"
+                     WidthRequest="40"
+                     VerticalOptions="Center"
+                     Margin="20" 
+                     BackgroundColor="Transparent" />
+
+        <SearchBar Grid.Row="1" 
+                   Margin="10" 
+                   Placeholder="Find Patients" 
+                   BackgroundColor="#251B37" 
+                   PlaceholderColor="{StaticResource TextColorWhite}"/>
+
+        <Label Grid.Row="2" 
+               BackgroundColor="{StaticResource Primary}" 
+               x:Name="loader" TextColor="{StaticResource TextSoft}"
+               HorizontalOptions="CenterAndExpand"/>
+
+        <CollectionView Grid.Row="3" x:Name="ListPatients" SelectionMode="Single"
+                        SelectionChanged="ListPatients_SelectionChanged"
+                        >
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="1" />
+
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Padding="2">
+                        <!--<SwipeView HeightRequest="96" 
+                                   BackgroundColor="Transparent"                   
+                                   IsClippedToBounds="True">
+                            
+            <SwipeView.LeftItems>-->
+                        <!--<SwipeItems Mode="Reveal">
+            <SwipeItemView BackgroundColor="Transparent" 
+                           Margin="5" 
+                           x:Name="itemOnEdit">
+            <StackLayout Margin="5">
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+            <Image Source="edit" HeightRequest="20" WidthRequest="20" Aspect="AspectFit" />
+            <Label Text="Edit" HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="{StaticResource TextColorWhite}" 
+                   FontSize="Micro"/>
+                
+            </StackLayout>
+            </StackLayout>
+            </SwipeItemView>
+            </SwipeItems>-->
+                        <!--</SwipeView.LeftItems>-->
+                        <Border 
+                    
+                   HeightRequest="250" 
+                   Padding="0" Margin="2"
+                   
+                   BackgroundColor="#251B37" 
+                   >
+
+                            <!--Must add expander so the client can view if the renter has an advance payment-->
+
+                            <Grid ColumnDefinitions="Auto, *">
+                                <Line Grid.Column="0" 
+                        WidthRequest="5" 
+                        BackgroundColor="{StaticResource ButtonColor}"/>
+
+                                <StackLayout Grid.Column="1" Margin="0" 
+                               Orientation="Horizontal" 
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="Transparent">
+
+                                    <Grid RowSpacing="0" RowDefinitions="Auto, Auto, Auto,Auto, Auto, Auto,Auto, Auto, Auto,Auto, Auto, Auto"
+                                              ColumnDefinitions="Auto, *">
+
+                                        <Label VerticalOptions="CenterAndExpand" 
+                         Text="Fullname:"                          
+                         TextColor="{StaticResource TextSoft}"                          
+                         FontSize="Medium" 
+                         LineBreakMode="TailTruncation"                         
+                         HorizontalOptions="Start" 
+                         Grid.Row="0" 
+                         Grid.Column="0" />
+
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding fullname}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Sex:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" />
+
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding sex}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Age:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" />
+
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding age}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+                                        
+                                        <Label VerticalOptions="CenterAndExpand" Text="Birthday:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="3" Grid.Column="0" />
+
+                                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding birthday}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Address:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="4" Grid.Column="0" />
+
+                                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding address}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Contact Number:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="5" Grid.Column="0" />
+
+                                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding contactnumber}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Condition Status:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="6" Grid.Column="0" />
+
+                                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding conditionSta}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Patient Wardroom:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="7" Grid.Column="0" />
+
+                                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding room}"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                    </Grid>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+                        <!--</SwipeView>-->
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

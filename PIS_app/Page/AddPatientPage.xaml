@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PIS_app.Page.AddPatientPage"
+              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             
+             BackgroundColor="#98A8F8"
+             Title="">
+
+
+    <VerticalStackLayout>
+
+
+        <skia:SKLottieView Source="nursing.json"
+                           RepeatCount="-1"
+                           HeightRequest="320" WidthRequest="500"/>
+
+        <Grid Margin="0,0,0,-50" ColumnDefinitions="*,*" RowDefinitions="AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO" RowSpacing="10">
+       
+        <Entry Grid.Row="0" Grid.Column="0"  FontFamily="facompa" x:Name="FullName"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="FullName" />
+            
+        <Entry Grid.Row="1" Grid.Column="0"  FontFamily="facompa" x:Name="Sex"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Sex" />
+      
+        <Entry Grid.Row="2" Grid.Column="0"  FontFamily="facompa" x:Name="Ages"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Age" />
+            
+       
+        <Entry Grid.Row="3" Grid.Column="0"  FontFamily="facompa" x:Name="Birthdays"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Birthday"  />
+      
+        <Entry Grid.Row="4" Grid.Column="0"  FontFamily="facompa" x:Name="Paddress"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Address"  />
+            
+        <Entry Grid.Row="5" Grid.Column="0"  FontFamily="facompa" x:Name="ContactNum"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="ContactNumber"  />
+      
+        <Entry Grid.Row="6" Grid.Column="0"  FontFamily="facompa"  x:Name="constatus"       
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Condition Status"  />
+       
+        <Entry Grid.Row="7" Grid.Column="0"  FontFamily="facompa" x:Name="Prooms"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Room" />
+
+        <Button Margin="0,10,0,30" Grid.Row="8" Grid.Column="0" Text="ADD PATIENT" 
+                    FontFamily="facompa"
+                    BackgroundColor="#251B37"
+                    TextColor="White"
+                    WidthRequest="200"
+                    x:Name="BTN_addPat"
+                Clicked="BTN_addPat_Clicked"
+                />
+
+        <Button  Margin="0,10,0,30" Grid.Row="8" Grid.Column="2" Text="EXIT" 
+                     FontFamily="facompa"                     
+                     x:Name="btncancel"                   
+                     WidthRequest="200" 
+                     BackgroundColor="White"
+                 Clicked="btncancel_Clicked"
+                     TextColor="#251B37" />
+
+    </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>
